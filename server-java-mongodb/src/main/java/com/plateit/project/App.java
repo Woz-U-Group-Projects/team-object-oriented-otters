@@ -1,4 +1,4 @@
-package com.plateit.app.project;
+package com.plateit.project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

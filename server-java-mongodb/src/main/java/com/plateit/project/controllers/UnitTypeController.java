@@ -1,4 +1,4 @@
-package com.plateit.app.controllers;
+package com.plateit.project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.plateit.app.models.UnitType;
-import com.plateit.app.models.UnitTypeRepository;
+import com.plateit.project.models.UnitType;
+import com.plateit.project.models.UnitTypeRepository;
 
 @RestController
-@RequestMapping("/")
 public class UnitTypeController {
 	
 
@@ -22,11 +21,9 @@ public class UnitTypeController {
 	UnitTypeRepository unitTypeRepository;
 	
 	
-	@PostMapping()
+	@PostMapping("/unit-type")
 	public UnitType createUnitType(@RequestBody UnitType unitType) {
 		return unitTypeRepository.save(unitType);
 	}
 	
-
 }
-

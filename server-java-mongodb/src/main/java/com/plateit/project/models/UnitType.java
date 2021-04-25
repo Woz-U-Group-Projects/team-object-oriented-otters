@@ -1,4 +1,4 @@
-package com.plateit.app.models;
+package com.plateit.project.models;
 
 import org.springframework.data.annotation.Id;
 

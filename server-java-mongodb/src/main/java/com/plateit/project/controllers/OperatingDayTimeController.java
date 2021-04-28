@@ -25,9 +25,9 @@ public class OperatingDayTimeController {
 	OperatingDayTimeRepository operatingDayTimeRepository;
 	
 	@PostMapping("/operatingdaytime")
-	public OperatingDayTime createOperationgDayTime(@RequestBody OperatingDayTime operatingDayTime) {
+	public ResponseEntity<OperatingDayTime> createOperationgDayTime(@RequestBody OperatingDayTime operatingDayTime) {
 		
-		return operatingDayTimeRepository.save(operatingDayTime);
+		return new ResponseEntity<>(operatingDayTimeRepository.save(operatingDayTime), HttpStatus.OK);
 	}
 	
 	@GetMapping("/operatingdaytime/{id}")
@@ -37,7 +37,7 @@ public class OperatingDayTimeController {
 		if (operatingDayTime != null) {
 			return new ResponseEntity<>(operatingDayTime, HttpStatus.OK);
 		}else {
-			return new ResponseEntity(null, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		}
 	}
 	
@@ -46,9 +46,9 @@ public class OperatingDayTimeController {
 		List <OperatingDayTime> operatingDaysTimes = operatingDayTimeRepository.findAll();
 		
 		if (!operatingDaysTimes.isEmpty()) {
-			return new ResponseEntity(operatingDaysTimes, HttpStatus.OK);
+			return new ResponseEntity<>(operatingDaysTimes, HttpStatus.OK);
 		}else {
-			return new ResponseEntity(null, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		}
 	}
 	
@@ -58,7 +58,22 @@ public class OperatingDayTimeController {
 		OperatingDayTime operatingDayTimeToUpdate = operatingDayTimeRepository.findById(operatingDayTime.id).orElse(null);
 		
 		if (operatingDayTimeToUpdate != null) {
-			
+			operatingDayTimeRepository.save(operatingDayTimeToUpdate);
+			return new ResponseEntity<>(operatingDayTime, HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@DeleteMapping("/operatingdaytime/{id}")
+	public ResponseEntity<?> deleteOperatingDayTime(@PathVariable String id){
+		OperatingDayTime operatingDayTime = operatingDayTimeRepository.findById(id).orElse(null);
+		
+		if (operatingDayTime != null) {
+			operatingDayTimeRepository.delete(operatingDayTime);
+			return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
+		}else {
+			return new ResponseEntity<>("{'message':'No content recieved'}", HttpStatus.BAD_REQUEST);
 		}
 	}
 

@@ -9,8 +9,8 @@ public class OperatingDayTime {
 	@Id
 	public String id;
 	public String day;
-	public LocalTime openHour;
-	public LocalTime closeHour;
+	public String openHour;
+	public String closeHour;
 	
 	public OperatingDayTime () {
 		
@@ -32,19 +32,19 @@ public class OperatingDayTime {
 		this.day = day;
 	}
 
-	public LocalTime getOpenHour() {
+	public String getOpenHour() {
 		return openHour;
 	}
 
-	public void setOpenHour(LocalTime openHour) {
+	public void setOpenHour(String openHour) {
 		this.openHour = openHour;
 	}
 
-	public LocalTime getCloseHour() {
+	public String getCloseHour() {
 		return closeHour;
 	}
 
-	public void setCloseHour(LocalTime closeHour) {
+	public void setCloseHour(String closeHour) {
 		this.closeHour = closeHour;
 	}
 	

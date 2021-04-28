@@ -77,7 +77,8 @@ public class RestaurantController {
 		Restaurant restaurant = restaurantRepository.findById(id).orElse(null);
 		
 		if (restaurant != null) {
-			return new ResponseEntity<>(restaurant, HttpStatus.OK);
+			restaurantRepository.delete(restaurant);
+			return new ResponseEntity<>(null, HttpStatus.OK);
 		}else {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}

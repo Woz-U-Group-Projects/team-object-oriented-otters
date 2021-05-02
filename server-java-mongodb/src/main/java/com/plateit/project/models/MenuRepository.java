@@ -1,5 +1,7 @@
 package com.plateit.project.models;
 
-public interface MenuRepository {
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+public interface MenuRepository extends MongoRepository<Menu, String>{
 
 }

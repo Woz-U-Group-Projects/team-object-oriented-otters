@@ -1,16 +1,19 @@
 package com.plateit.project.models;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 
-public class Meal {
+public class Meal implements Item{
 
 	@Id 
 	public String id;
+	private Image picture;
 	public String name;
+	public String description;
 	public UnitType unitType;
-	public Beverage beverage;
-	public Components components;
-	public double price;
+	public List <Item> Items;
+	public float price;
 	
 	public Meal() {
 		
@@ -23,6 +26,13 @@ public class Meal {
 	public void setId(String id) {
 		this.id = id;
 	}
+	
+	public Image getPicture() {
+		return picture;
+	}
+	public void setPicture(Image picture) {
+		this.picture = picture;
+	}
 
 	public String getName() {
 		return name;
@@ -30,6 +40,13 @@ public class Meal {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public UnitType getUnitType() {
@@ -40,28 +57,22 @@ public class Meal {
 		this.unitType = unitType;
 	}
 
-	public Beverage getBeverage() {
-		return beverage;
-	}
-
-	public void setBeverage(Beverage beverage) {
-		this.beverage = beverage;
-	}
-
-	public Components getComponents() {
-		return components;
-	}
-
-	public void setComponents(Components components) {
-		this.components = components;
-	}
-
-	public double getPrice() {
+	public float getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
+
+	public List<Item> getItems() {
+		return Items;
+	}
+
+	public void setItems(List<Item> items) {
+		Items = items;
+	}
+	
+	
 	
 }

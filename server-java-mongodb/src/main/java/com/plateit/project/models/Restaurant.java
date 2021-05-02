@@ -12,6 +12,7 @@ public class Restaurant {
 
 	@Id
 	public String id;
+	public Image picture;
 	public String name;
 	public Address address;
 	public List <OperatingDayTime> operatingDaysTimes;

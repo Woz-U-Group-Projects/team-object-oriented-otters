@@ -12,11 +12,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.plateit.project.models.Image;
 import com.plateit.project.models.Restaurant;
 import com.plateit.project.models.RestaurantAgent;
 import com.plateit.project.models.RestaurantRepository;
+import com.plateit.project.servicess.ImageService;
 import com.plateit.project.models.RestaurantAgentRepository;
 
 
@@ -28,6 +32,8 @@ public class RestaurantController {
 	RestaurantRepository restaurantRepository;
 	@Autowired
 	RestaurantAgentRepository restaurantAgentRepository;
+	@Autowired
+	ImageService imageService;
 	
 	@PostMapping("/restaurant")
 	public ResponseEntity<?> createRestaurant(@RequestBody Restaurant restaurant){
@@ -62,9 +68,11 @@ public class RestaurantController {
 	
 	@PutMapping("/restaurant")
 	public ResponseEntity<?> updateRestaurant(@RequestBody Restaurant restaurant){
+
 		Restaurant restaurantToUpdate = restaurantRepository.findById(restaurant.id).orElse(null);
-		
+
 		if (restaurantToUpdate != null) {
+			restaurantToUpdate = restaurant;
 			restaurantRepository.save(restaurantToUpdate);
 			return new ResponseEntity<>(restaurantToUpdate, HttpStatus.OK);
 		}else {
@@ -82,6 +90,13 @@ public class RestaurantController {
 		}else {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
+	}
+	
+	@PostMapping("/restaurant-picture")
+	public ResponseEntity<?> uploadRestaturantPicture(@RequestPart("file") MultipartFile file){
+		MultipartFile uploadedFile = file;
+		Image uploadedImage = imageService.uploadFileService(uploadedFile);
+		return new ResponseEntity<Image>(uploadedImage,HttpStatus.OK);
 	}
 	
 

@@ -9,6 +9,7 @@ public class Address {
 	public String address;
 	public String secondaryAddress;
 	public String city;
+	private String state;
 	public String zipcode;
 	
 	public Address() {
@@ -53,6 +54,14 @@ public class Address {
 
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 	
 	

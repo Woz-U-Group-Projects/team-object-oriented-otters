@@ -18,78 +18,78 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.plateit.project.models.Image;
 import com.plateit.project.servicess.ImageService;
-import com.plateit.project.models.Beverage;
-import com.plateit.project.models.BeverageRepository;
+import com.plateit.project.models.Food;
+import com.plateit.project.models.FoodRepository;
 
 @RestController
 @RequestMapping("api")
-public class BeverageController {
+public class FoodController {
 
 	@Autowired
-	BeverageRepository beverageRepository;
+	FoodRepository foodRepository;
 	@Autowired
 	ImageService imageService;
 	
-	@PostMapping("/beverage")
-	public ResponseEntity<?> createBeverage(@RequestBody Beverage beverage){
+	@PostMapping("/food")
+	public ResponseEntity<?> createFood(@RequestBody Food food){
 		
-		Beverage newBeverage = beverageRepository.save(beverage);
+		Food newFood = foodRepository.save(food);
 		
-		if (newBeverage != null)
-			return new ResponseEntity<Beverage>(newBeverage, HttpStatus.OK);
+		if (newFood != null)
+			return new ResponseEntity<Food>(newFood, HttpStatus.OK);
 		else
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 	}
 	
-	@GetMapping("/beverage/{id}")
-	public ResponseEntity<?> getRestaurant(@PathVariable String id){
-		Beverage beverage = beverageRepository.findById(id).orElse(null);
+	@GetMapping("/food/{id}")
+	public ResponseEntity<?> getFood(@PathVariable String id){
+		Food food = foodRepository.findById(id).orElse(null);
 		
-		if (beverage != null) {
-			return new ResponseEntity<>(beverage, HttpStatus.OK);
+		if (food != null) {
+			return new ResponseEntity<>(food, HttpStatus.OK);
 		}else {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		}
 	}
 	
-	@GetMapping("/beverage")
-	public ResponseEntity<List<?>> getAllRestaurants(){
-		List <Beverage> beverages = beverageRepository.findAll();
+	@GetMapping("/food")
+	public ResponseEntity<List<?>> getAllFoods(){
+		List <Food> foods = foodRepository.findAll();
 		
-		if (!beverages.isEmpty()) {
-			return new ResponseEntity<>(beverages, HttpStatus.OK);
+		if (!foods.isEmpty()) {
+			return new ResponseEntity<>(foods, HttpStatus.OK);
 		}else {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		}
 	}
 	
-	@PutMapping("/beverage")
-	public ResponseEntity<?> updateBeverage(@RequestBody Beverage beverage){
+	@PutMapping("/food")
+	public ResponseEntity<?> updateFood(@RequestBody Food food){
 
-		Beverage beverageToUpdate = beverageRepository.findById(beverage.getId()).orElse(null);
+		Food foodToUpdate = foodRepository.findById(food.getId()).orElse(null);
 
-		if (beverageToUpdate != null) {
-			beverageToUpdate = beverage;
-			beverageRepository.save(beverageToUpdate);
-			return new ResponseEntity<>(beverageToUpdate, HttpStatus.OK);
+		if (foodToUpdate != null) {
+			foodToUpdate = food;
+			foodRepository.save(foodToUpdate);
+			return new ResponseEntity<>(foodToUpdate, HttpStatus.OK);
 		}else {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
-	@DeleteMapping("/beverage/{id}")
-	public ResponseEntity<?> deleteRestaurant(@PathVariable String id){
-		Beverage beverage = beverageRepository.findById(id).orElse(null);
+	@DeleteMapping("/food/{id}")
+	public ResponseEntity<?> deleteFood(@PathVariable String id){
+		Food food = foodRepository.findById(id).orElse(null);
 		
-		if (beverage != null) {
-			beverageRepository.delete(beverage);
+		if (food != null) {
+			foodRepository.delete(food);
 			return new ResponseEntity<>(null, HttpStatus.OK);
 		}else {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
-	@PostMapping("/beverage-picture")
+	@PostMapping("/food-picture")
 	public ResponseEntity<?> uploadRestaturantPicture(@RequestPart("file") MultipartFile file){
 		MultipartFile uploadedFile = file;
 		Image uploadedImage = imageService.uploadFileService(uploadedFile);
@@ -99,5 +99,4 @@ public class BeverageController {
 		else
 			return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
 	}
-	
 }

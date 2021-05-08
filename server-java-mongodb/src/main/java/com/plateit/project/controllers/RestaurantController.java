@@ -96,7 +96,11 @@ public class RestaurantController {
 	public ResponseEntity<?> uploadRestaturantPicture(@RequestPart("file") MultipartFile file){
 		MultipartFile uploadedFile = file;
 		Image uploadedImage = imageService.uploadFileService(uploadedFile);
-		return new ResponseEntity<Image>(uploadedImage,HttpStatus.OK);
+
+		if (uploadedImage != null)
+			return new ResponseEntity<Image>(uploadedImage,HttpStatus.OK);
+		else
+			return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
 	}
 	
 

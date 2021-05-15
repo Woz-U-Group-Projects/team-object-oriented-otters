@@ -44,10 +44,10 @@ public class LoginDetailsService implements UserDetailsService{
 	private List<SimpleGrantedAuthority> getAuthorities(List<String> roles) {
 
 		List<SimpleGrantedAuthority> authList = new ArrayList<>();
-//		roles.forEach(v ->{
-//			authList.add(new SimpleGrantedAuthority(v));
-//		});
-		authList.add(new SimpleGrantedAuthority("ROLE_USER"));
+		roles.forEach(v ->{
+			authList.add(new SimpleGrantedAuthority(v));
+		});
+		//authList.add(new SimpleGrantedAuthority("ROLE_USER"));
 
 		return authList;
 	}

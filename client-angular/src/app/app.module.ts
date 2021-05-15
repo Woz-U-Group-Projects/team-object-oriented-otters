@@ -6,6 +6,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { TaskDisplayComponent } from "./task-display/task-display.component";
 
+/* Here you can import the AppRoutingModule in imports field or any other module*/
 @NgModule({
   declarations: [AppComponent, TaskDisplayComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],

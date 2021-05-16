@@ -18,12 +18,12 @@ export class TaskDisplayComponent implements OnInit {
 
   addTask() {
     this.taskService.addTask(this.newTask).subscribe(result => {
-      //this.getTasks();
+      this.getTasks();
       this.newTask = new Task();
     });
   }
 
   ngOnInit() {
-    //this.getTasks();
+    this.getTasks();
   }
 }

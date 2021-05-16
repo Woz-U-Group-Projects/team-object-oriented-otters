@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Task } from "./models/task";
-import { Observable, of } from "rxjs";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -23,11 +23,6 @@ export class TaskService {
   }
 
   addTask(task): Observable<Task> {
-    task = {"id":"my it","name":"task name","complete":false};
-    //Observable <Task> ob = task;
-    //return this.http.post<Task>(this.apiUrl, task);
-    let obTask = of(task);
-    console.log("Task "+task.name);
-    return obTask;
+    return this.http.post<Task>(this.apiUrl, task);
   }
 }

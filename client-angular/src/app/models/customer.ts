@@ -1,3 +1,4 @@
+import { customerAddress } from "./customerAddress";
 import { Picture } from "./picture";
 
 export class Customer{
@@ -5,7 +6,8 @@ export class Customer{
     pictgureProfile:Picture;
     firstName:string;
     lastName:string;
-    addressType:string;
+    address: customerAddress;
     email:string;
     phoneNumber:string;
+
 }

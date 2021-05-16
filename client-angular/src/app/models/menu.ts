@@ -1,6 +1,8 @@
-export class menu{
+import { Item } from "./item";
+
+export class menu implements Item{
     id:string;
     name:string;
     description:string;
-    item:string;
+    items: any[];
 }

@@ -1,6 +1,7 @@
+import { Item } from "./item";
 import { Picture } from "./picture";
 
-export class side{
+export class side implements Item{
     id:string;
     picture:Picture;
     name:string;

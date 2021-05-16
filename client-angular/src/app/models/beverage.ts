@@ -1,5 +1,6 @@
 import {Picture} from "./picture";
-export class Beverage{
+import { Item } from "./item";
+export class Beverage implements Item{
     id: string;
     picture: Picture;
     name: string;

@@ -5,10 +5,10 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { TaskDisplayComponent } from "./task-display/task-display.component";
+import { LoginComponent } from './components/login.component';
 
-/* Here you can import the AppRoutingModule in imports field or any other module*/
 @NgModule({
-  declarations: [AppComponent, TaskDisplayComponent],
+  declarations: [AppComponent, TaskDisplayComponent, LoginComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent]

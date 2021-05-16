@@ -1,12 +1,15 @@
 import { Customer } from "./customer";
+import { Item } from "./item";
+import { Meal } from "./meal";
 
 export class order {
     id:string;
     orderNumber:string;
     customer:Customer;
-    //paymentMethod:paymentMethod;
-    //items:item;
+    paymentMethod: string;
+    items: any[];
     subtotal:number;
     tax:number;
     total:number;
+
 }

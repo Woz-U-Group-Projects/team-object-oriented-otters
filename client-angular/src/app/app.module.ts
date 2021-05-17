@@ -5,10 +5,11 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { TaskDisplayComponent } from "./task-display/task-display.component";
-import { LoginComponent } from './components/login.component';
+import { LoginComponent } from './components/login.Component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
-  declarations: [AppComponent, TaskDisplayComponent, LoginComponent],
+  declarations: [AppComponent, TaskDisplayComponent,LoginComponent, RegisterComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent]

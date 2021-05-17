@@ -47,7 +47,7 @@ public class LoginDetailsService implements UserDetailsService{
 		roles.forEach(v ->{
 			authList.add(new SimpleGrantedAuthority(v));
 		});
-		//authList.add(new SimpleGrantedAuthority("ROLE_USER"));
+		authList.add(new SimpleGrantedAuthority("ROLE_USER"));
 
 		return authList;
 	}
